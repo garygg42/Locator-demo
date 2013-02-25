@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.talend.esb.examples.osgi-soap-parsestring</groupId>
+	<artifactId>osgi-soap-parsestring-demo-client-gui</artifactId>
+	<name>StringWrapper Demo Client with GUI</name>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>org.talend.esb.examples.osgi-soap-parsestring</groupId>
+		<artifactId>osgi-soap-parsestring-demo</artifactId>
+		<version>5.3.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>osgi-soap-parsestring-demo-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>osgi-soap-parsestring-demo-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>java</executable>
+                    <mainClass>demo.client.StringWrapperClientGUI</mainClass>
+                    <commandlineArgs>${commandline.args}</commandlineArgs>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+
+</project>

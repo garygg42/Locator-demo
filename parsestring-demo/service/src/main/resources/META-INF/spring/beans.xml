@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+    xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://cxf.apache.org/jaxws
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+
+    <import resource="classpath:META-INF/tesb/agent-osgi.xml" />
+
+    <import resource="classpath:META-INF/tesb/locator/beans-osgi.xml" />
+
+    <bean id="org.apache.cxf.management.InstrumentationManager"
+        class="org.apache.cxf.management.jmx.InstrumentationManagerImpl">
+        <property name="bus" ref="cxf" />
+        <property name="usePlatformMBeanServer" value="true" />
+        <property name="enabled" value="true" />
+    </bean>
+
+    <bean id="CounterRepository" class="org.apache.cxf.management.counters.CounterRepository">
+        <property name="bus" ref="cxf" />
+    </bean>
+
+    <bean id="stringService" class="demo.service.StringWrapperServiceImpl">
+    </bean>
+
+    <jaxws:endpoint xmlns:s="http://StringWrapper.com"
+        serviceName="s:StringWrapper" endpointName="s:StringWrapperPort"
+        id="StringWrapper_soap" implementor="#stringService" address="/stringWrapper">
+        <jaxws:features>
+            <ref bean="eventFeature" />
+            <bean class="org.talend.esb.servicelocator.cxf.LocatorFeature">
+            </bean>
+        </jaxws:features>
+    </jaxws:endpoint>
+
+</beans>
+
