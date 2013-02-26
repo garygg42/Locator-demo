@@ -35,12 +35,11 @@ public final class StringWrapperClient {
                 }
             }
         } else if (args[0].equals("manual")) {
+			Scanner input = new Scanner(System.in);
             while (true) {
-                Scanner input = new Scanner(System.in);
                 System.out.print("Enter string to parse: ");
                 String stp = input.nextLine();
                 System.out.println(client.getParsedString(stp));
-                input.close();
             }
         }
     }
