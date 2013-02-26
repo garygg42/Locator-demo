@@ -94,4 +94,14 @@ public class StringWrapper {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "<stringwrapper>\n" + 
+                    "\t<source>" + source + "</source>\n"+ 
+                    "\t<consonants>" + consonants + "</consonants>\n"+ 
+                    "\t<vowels>" + vowels + "</vowels>\n" + 
+                "</stringwrapper>\n";
+
+    }
+
 }

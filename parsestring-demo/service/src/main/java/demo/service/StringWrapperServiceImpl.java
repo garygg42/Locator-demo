@@ -9,7 +9,6 @@ import demo.common.StringWrapperService;
 public class StringWrapperServiceImpl implements StringWrapperService {
 
     public StringWrapper getParsedString(String string) {
-
         return new StringWrapper(string);
     }
 
