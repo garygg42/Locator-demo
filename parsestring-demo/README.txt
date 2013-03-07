@@ -4,13 +4,17 @@ Add maven URL into karaf:
 	features:addurl mvn:org.examples.parsestring/features/1.1.0/xml
 
 Install example feature in container:
-	features:install parsestring
+	features:install parsestring-service
+for example service
+
+	features:install parsestring-client
+for example client
 
 Starting the client
 -------------------
-in root of this project execute 
-	mvn exec:java -pl client -Dcommandline.args="loop"
-for client, which sends random strings in infinity loop to parsestring service
-
-	mvn exec:java -pl client -Dcommandline.args="manual"
+in container execute
+	parsestring:parse <arg0>
 for client, which sends string to parsestring service
+
+	parsestring:loop
+for client, which sends random strings in infinity loop to parsestring service

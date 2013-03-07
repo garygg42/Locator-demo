@@ -10,9 +10,9 @@
     </feature>
     <feature name='parsestring-client' version='${project.version}'>
         <feature>cxf</feature>
-        <bundle>mvn:${project.groupId}/parsestring-demo-client/${project.version}
+        <bundle>mvn:${project.groupId}/parsestring-demo-client-common/${project.version}
         </bundle>
-        <bundle>mvn:${project.groupId}/parsestring-demo-client-commands/${project.version}
+        <bundle>mvn:${project.groupId}/parsestring-demo-client-osgi/${project.version}
         </bundle>
     </feature>
 </features>
