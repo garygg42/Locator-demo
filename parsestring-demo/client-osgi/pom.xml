@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>parsestring-demo-client-osgi</artifactId>
+    <name>StringWrapper Demo Client OSGI</name>
+    <packaging>bundle</packaging>
+
+    <parent>
+        <groupId>org.examples.parsestring</groupId>
+        <artifactId>parsestring-demo</artifactId>
+        <version>1.1.0</version>
+        <relativePath>..</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>parsestring-demo-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>parsestring-demo-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.talend.esb</groupId>
+            <artifactId>locator</artifactId>
+            <version>5.3.0-SNAPSHOT</version>
+            <type>bundle</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.karaf.shell</groupId>
+            <artifactId>org.apache.karaf.shell.console</artifactId>
+            <version>2.3.0</version>
+            <type>bundle</type>
+        </dependency>
+        <dependency>
+            <groupId>org.examples.parsestring</groupId>
+            <artifactId>parsestring-demo-client</artifactId>
+            <version>1.1.0</version>
+            <type>bundle</type>
+        </dependency>
+        <dependency>
+            <groupId>org.examples.parsestring</groupId>
+            <artifactId>parsestring-demo-common</artifactId>
+            <version>1.1.0</version>
+            <type>bundle</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Require-Bundle>
+                            org.apache.cxf.bundle,
+                            org.springframework.beans,
+                            org.springframework.context,
+                            locator
+                        </Require-Bundle>
+                        <Import-Package>
+                            demo.common,
+                            org.springframework.context.support,
+                            javax.jws,
+                            javax.xml.bind,
+                            org.talend.esb.servicelocator.cxf.*,
+                            org.apache.felix.service.command,
+                            org.apache.felix.gogo.commands,
+                            org.apache.karaf.shell.console,
+                            *
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

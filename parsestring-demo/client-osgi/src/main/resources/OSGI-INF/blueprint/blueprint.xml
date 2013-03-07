@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <reference id="stringWrapperClient" interface="demo.common.StringWrapperService" />
+    <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">
+        <command name="parsestring/parse">
+            <action class="demo.commands.StringWrapperClientOSGI">
+                <property name="service" ref="stringWrapperClient" />
+            </action>
+        </command>
+        <command name="parsestring/loop">
+            <action class="demo.commands.StringWrapperClientLoop">
+                <property name="service" ref="stringWrapperClient" />
+            </action>
+        </command>
+    </command-bundle>
+</blueprint>

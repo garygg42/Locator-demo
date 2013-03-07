@@ -14,17 +14,6 @@ http://cxf.apache.org/schemas/jaxws.xsd">
 
     <import resource="classpath:META-INF/tesb/locator/beans-osgi.xml" />
 
-    <bean id="org.apache.cxf.management.InstrumentationManager"
-        class="org.apache.cxf.management.jmx.InstrumentationManagerImpl">
-        <property name="bus" ref="cxf" />
-        <property name="usePlatformMBeanServer" value="true" />
-        <property name="enabled" value="true" />
-    </bean>
-
-    <bean id="CounterRepository" class="org.apache.cxf.management.counters.CounterRepository">
-        <property name="bus" ref="cxf" />
-    </bean>
-
     <bean id="stringService" class="demo.service.StringWrapperServiceImpl">
     </bean>
 

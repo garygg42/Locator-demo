@@ -2,8 +2,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>parsestring-demo-client</artifactId>
-    <name>StringWrapper Demo Client</name>
+    <artifactId>parsestring-demo-client-common</artifactId>
+    <name>StringWrapper Demo Client Common</name>
     <packaging>bundle</packaging>
 
     <parent>
@@ -40,6 +40,12 @@
             <version>5.3.0-SNAPSHOT</version>
             <type>bundle</type>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.osgi</groupId>
+            <artifactId>spring-osgi-core</artifactId>
+            <version>1.2.1</version>
+            <type>bundle</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -47,9 +53,11 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Spring-Context>*;timeout:=1200</Spring-Context>
                         <Require-Bundle>
                             org.apache.cxf.bundle,
                             org.springframework.beans,
@@ -61,25 +69,10 @@
                             org.springframework.context.support,
                             javax.jws,
                             javax.xml.bind,
-                            org.talend.esb.servicelocator.cxf.*
+                            *
                         </Import-Package>
+                        <Export-Package>demo.common,demo.client,demo.strategies</Export-Package>
                     </instructions>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <executable>java</executable>
-                    <mainClass>demo.client.StringWrapperClient</mainClass>
-                    <commandlineArgs>${commandline.args}</commandlineArgs>
                 </configuration>
             </plugin>
         </plugins>

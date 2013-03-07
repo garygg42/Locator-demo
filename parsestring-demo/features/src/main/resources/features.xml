@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
     <!-- repository>mvn:org.talend.esb/features/${project.version}/xml</repository -->
-    <feature name='parsestring' version='${project.version}'>
+    <feature name='parsestring-service' version='${project.version}'>
         <feature>cxf</feature>
-        <bundle>mvn:${project.groupId}/parsestring-demo-common/${project.version}</bundle>
-        <bundle>mvn:${project.groupId}/parsestring-demo-service/${project.version}</bundle>
+        <bundle>mvn:${project.groupId}/parsestring-demo-common/${project.version}
+        </bundle>
+        <bundle>mvn:${project.groupId}/parsestring-demo-service/${project.version}
+        </bundle>
+    </feature>
+    <feature name='parsestring-client' version='${project.version}'>
+        <feature>cxf</feature>
+        <bundle>mvn:${project.groupId}/parsestring-demo-client/${project.version}
+        </bundle>
+        <bundle>mvn:${project.groupId}/parsestring-demo-client-commands/${project.version}
+        </bundle>
     </feature>
 </features>
