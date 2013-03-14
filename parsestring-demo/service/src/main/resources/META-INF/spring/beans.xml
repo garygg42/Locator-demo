@@ -10,20 +10,15 @@ http://cxf.apache.org/schemas/jaxws.xsd">
 
     <import resource="classpath:META-INF/cxf/cxf.xml" />
 
-    <import resource="classpath:META-INF/tesb/agent-osgi.xml" />
-
     <import resource="classpath:META-INF/tesb/locator/beans-osgi.xml" />
 
-    <bean id="stringService" class="demo.service.StringWrapperServiceImpl">
-    </bean>
+    <bean id="stringService" class="demo.service.StringWrapperServiceImpl"/>
 
     <jaxws:endpoint xmlns:s="http://StringWrapper.com"
         serviceName="s:StringWrapper" endpointName="s:StringWrapperPort"
         id="StringWrapper_soap" implementor="#stringService" address="/stringWrapper">
         <jaxws:features>
-            <ref bean="eventFeature" />
-            <bean class="org.talend.esb.servicelocator.cxf.LocatorFeature">
-            </bean>
+            <bean class="org.talend.esb.servicelocator.cxf.LocatorFeature"/>
         </jaxws:features>
     </jaxws:endpoint>
 

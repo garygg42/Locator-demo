@@ -67,6 +67,7 @@
                         <Import-Package>
                             demo.common,
                             org.springframework.context.support,
+                            org.talend.esb.servicelocator.cxf.*,
                             javax.jws,
                             javax.xml.bind,
                             *

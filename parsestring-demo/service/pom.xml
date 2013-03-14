@@ -39,14 +39,12 @@
                             org.apache.cxf.bundle,
                             org.springframework.beans,
                             org.springframework.context,
-                            sam-common,sam-agent,
                             locator
                         </Require-Bundle>
                         <Import-Package>
                             demo.common,
                             org.springframework.context.support,
-                            javax.jws,org.apache.cxf.management.jmx,
-                            org.apache.cxf.management.counters,
+                            javax.jws,
                             org.talend.esb.servicelocator.cxf
                         </Import-Package>
                     </instructions>

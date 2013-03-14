@@ -35,7 +35,7 @@
         address="locator://stringWrapper">
         <jaxws:features>
             <bean class="org.talend.esb.servicelocator.cxf.LocatorFeature">
-                <property name="selectionStrategy" value="myStrategy"></property>
+                <property name="selectionStrategy" value="myStrategy" />
             </bean>
         </jaxws:features>
     </jaxws:client>
